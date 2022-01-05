@@ -7,9 +7,3 @@
 <h5>Average revenue per order : <%= @avg_per_order %></h5>
 <h5>Number of customers : <%= @customers %></h5>
 <hr>
-
-<ul>
-  <% @orders.each do |order| %>
-    <li><%= order.date %> | <%= order.country %> | <%= order.product_description[0..30] %>.. | <%= order.quantity %> pieces | <%= order.unit_price %> €</li>
-  <% end %>
-</ul>

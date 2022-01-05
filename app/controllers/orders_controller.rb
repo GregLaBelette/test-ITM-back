@@ -17,17 +17,28 @@ class OrdersController < ApplicationController
   private
 
   def filter_orders
-    Order.all
+    if params[:country].present?
+      Order.where(country: params[:country])
+    else
+      Order.all
+    end
   end
 
-  def calculate_revenue; end
+  def calculate_revenue
+    @orders.sum('quantity * unit_price')
+  end
 
-  def calculate_avg; end
+  def calculate_avg
+    @orders.average('quantity * unit_price')
+  end
 
-  def customers_count; end
+  def customers_count
+    @orders.group(:customer_id).count.length
+  end
 
   def build_json
     {
+      count: @orders.count,
       revenue: @revenue,
       average_per_order: calculate_avg,
       customers: customers_count
