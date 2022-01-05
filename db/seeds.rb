@@ -1,5 +1,6 @@
 # frozen_string-literal:true
-require('CSV')
+
+require('csv')
 
 puts '-' * 72
 puts 'Destroying older entries'
