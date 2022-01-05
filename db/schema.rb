@@ -17,6 +17,10 @@ ActiveRecord::Schema.define(version: 2022_01_05_085012) do
 
   create_table "orders", force: :cascade do |t|
     t.date "date"
+<<<<<<< HEAD
+=======
+    t.integer "customer_id"
+>>>>>>> seeds
     t.string "country"
     t.string "product_code"
     t.string "product_description"

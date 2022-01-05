@@ -3,6 +3,10 @@
 # order model
 class Order < ApplicationRecord
   validates :date, presence: true
+<<<<<<< HEAD
+=======
+  validates :customer_id, presence: true
+>>>>>>> seeds
   validates :country, presence: true, length: { minimum: 2 }
   validates :product_code, presence: true
   validates :product_description, presence: true, length: { minimum: 10 }
