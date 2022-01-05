@@ -14,6 +14,15 @@ class OrdersController < ApplicationController
     end
   end
 
+  def chart
+    @orders = filter_orders
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: 'orders/chart.html.erb', locals: { orders: @orders } }
+    end
+  end
+
   private
 
   def filter_orders

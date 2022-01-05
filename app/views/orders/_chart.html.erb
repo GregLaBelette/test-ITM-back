@@ -1,0 +1,1 @@
+<%= column_chart orders.group_by_month(:date, format: "%b, %Y").count, colors: ["yellow", "blue"], label: "Monthly revenue", height: "600px", dataset: { borderWidth: 0 } %>

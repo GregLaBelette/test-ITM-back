@@ -7,3 +7,4 @@
 <h5>Average revenue per order : <%= @avg_per_order %></h5>
 <h5>Number of customers : <%= @customers %></h5>
 <hr>
+<%= render partial: "chart", locals: { orders: @orders } %>
