@@ -3,6 +3,7 @@
 # Orders controller
 class OrdersController < ApplicationController
   def index
+    @countries = countries
     @orders = filter_orders
     @revenue = calculate_revenue
     @avg_per_order = calculate_avg
@@ -31,6 +32,10 @@ class OrdersController < ApplicationController
     else
       Order.all
     end
+  end
+
+  def countries
+    Order.group(:country).count.keys
   end
 
   def calculate_revenue
