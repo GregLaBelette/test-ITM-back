@@ -3,6 +3,7 @@
 # Orders controller
 class OrdersController < ApplicationController
   def index
+    @countries = countries
     @orders = filter_orders
     @revenue = calculate_revenue
     @avg_per_order = calculate_avg
@@ -33,6 +34,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def countries
+    Order.group(:country).count.keys
+  end
+
   def calculate_revenue
     @orders.sum('quantity * unit_price')
   end
@@ -47,6 +52,7 @@ class OrdersController < ApplicationController
 
   def build_json
     {
+      countries: @countries,
       count: @orders.count,
       revenue: @revenue,
       average_per_order: calculate_avg,
