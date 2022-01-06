@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: build_json }
+      format.json { render json: summary_data }
     end
   end
 
@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.text { render partial: 'orders/chart.html.erb', locals: { orders: @orders } }
+      format.json { render json: chart_data }
     end
   end
 
@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
     @orders.group(:customer_id).count.length
   end
 
-  def build_json
+  def summary_data
     {
       countries: @countries,
       count: @orders.count,
@@ -58,5 +58,9 @@ class OrdersController < ApplicationController
       average_per_order: calculate_avg,
       customers: customers_count
     }
+  end
+
+  def chart_data
+    @orders.group("DATE_TRUNC('month', date)").sum('quantity * unit_price').transform_keys { |k| k.strftime('%B, %Y') }
   end
 end
