@@ -61,6 +61,6 @@ class OrdersController < ApplicationController
   end
 
   def chart_data
-    @orders.group("DATE_TRUNC('month', date)").sum('quantity * unit_price').transform_keys { |k| k.strftime('%B %Y') }
+    @orders.group("DATE_TRUNC('month', date)").sum('quantity * unit_price').transform_keys { |k| k.strftime('%b %Y') }
   end
 end

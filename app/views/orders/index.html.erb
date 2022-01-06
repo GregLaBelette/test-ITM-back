@@ -1,11 +1,13 @@
-<h1>Welcome to orders index</h1>
 
-<hr>
-<h3><%= @orders.count %> orders in database</h3>
-<hr>
-<h5>Countries : <%= @countries %></h5>
-<h5>Revenue : <%= @revenue %> €</h5>
-<h5>Average revenue per order : <%= @avg_per_order %></h5>
-<h5>Number of customers : <%= @customers %></h5>
-<hr>
-<%= render partial: "chart", locals: { orders: @orders } %>
+<div style='max-width: 1000px; margin: auto'>
+  <h1>Welcome to orders index</h1>
+  <hr>
+  <h3><%= @orders.count %> orders in database</h3>
+  <hr>
+  <h5>Countries : <%= @countries %></h5>
+  <h5>Revenue : <%= @revenue %> €</h5>
+  <h5>Average revenue per order : <%= @avg_per_order %></h5>
+  <h5>Number of customers : <%= @customers %></h5>
+  <hr>
+  <%= render partial: "chart", locals: { orders: @orders } %>
+</div>
